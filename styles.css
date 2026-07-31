@@ -1,0 +1,1095 @@
+/**
+ * Assignment Benchmarks
+ * Premium SaaS Styling for essaygraderai.app
+ * 
+ * Design: Linear.app / Stripe-inspired with Inter font
+ * Mobile-first responsive design with full-width layouts
+ * Features: Bulk paste builder, TGA import from training.gov.au
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CSS Variables (Theme-agnostic)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    --gcl-primary: hsl(220, 90%, 56%);
+    --gcl-primary-hover: hsl(220, 90%, 48%);
+    --gcl-primary-muted: hsl(220, 90%, 96%);
+    --gcl-success: hsl(142, 71%, 45%);
+    --gcl-success-muted: hsl(142, 76%, 94%);
+    --gcl-success-border: hsl(142, 71%, 65%);
+    --gcl-warning: hsl(45, 93%, 47%);
+    --gcl-warning-muted: hsl(45, 93%, 94%);
+    --gcl-warning-border: hsl(45, 93%, 70%);
+    --gcl-error: hsl(0, 84%, 60%);
+    --gcl-error-muted: hsl(0, 84%, 96%);
+    --gcl-bg: hsl(0, 0%, 100%);
+    --gcl-bg-subtle: hsl(220, 14%, 98%);
+    --gcl-bg-muted: hsl(220, 14%, 96%);
+    --gcl-border: hsl(220, 13%, 91%);
+    --gcl-border-hover: hsl(220, 13%, 82%);
+    --gcl-text: hsl(220, 15%, 15%);
+    --gcl-text-secondary: hsl(220, 10%, 45%);
+    --gcl-text-muted: hsl(220, 10%, 60%);
+    --gcl-radius-sm: 0.375rem;
+    --gcl-radius-md: 0.5rem;
+    --gcl-radius-lg: 0.75rem;
+    --gcl-radius-xl: 1rem;
+    --gcl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --gcl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --gcl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --gcl-transition-fast: 120ms ease;
+    --gcl-transition-base: 200ms ease;
+    --gcl-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --gcl-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Base Container - Full Width Responsive
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 2rem;
+    position: relative;
+    font-family: var(--gcl-font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--gcl-text);
+}
+
+.gradingform_benchmarks * {
+    box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Groups Container
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks .groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.gradingform_benchmarks .group {
+    background: var(--gcl-bg);
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-lg);
+    padding: 1.25rem;
+    width: 100%;
+    transition: box-shadow var(--gcl-transition-base), border-color var(--gcl-transition-base);
+}
+
+.gradingform_benchmarks .group:hover {
+    border-color: var(--gcl-border-hover);
+    box-shadow: var(--gcl-shadow-sm);
+}
+
+/* Group Description (Heading) - Uses Site Primary Color */
+.gradingform_benchmarks .group .description {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary, var(--gcl-primary));
+    padding: 0 0 0.75rem 0;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gcl-border);
+    display: block;
+}
+
+/* Boost theme primary color inheritance */
+.theme-boost .gradingform_benchmarks .group .description,
+[data-theme] .gradingform_benchmarks .group .description {
+    color: var(--primary);
+}
+
+.gradingform_benchmarks .group .description input[type="text"] {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+    background: var(--gcl-bg);
+    transition: border-color var(--gcl-transition-fast), box-shadow var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks .group .description input[type="text"]:focus {
+    outline: none;
+    border-color: var(--gcl-primary);
+    box-shadow: 0 0 0 3px var(--gcl-primary-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Items Container - Full Width
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks .group .items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    width: 100%;
+}
+
+.gradingform_benchmarks .group .items .item {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--gcl-bg-subtle);
+    border: 1px solid transparent;
+    border-radius: var(--gcl-radius-md);
+    width: 100%;
+    transition: all var(--gcl-transition-fast);
+}
+
+/* Item wrapper for proper layout */
+.gradingform_benchmarks .group .items .item .item-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.gradingform_benchmarks .group .items .item:hover {
+    background: var(--gcl-bg-muted);
+    border-color: var(--gcl-border);
+}
+
+/* Item Definition - Grows to fill space, pushes score to right */
+.gradingform_benchmarks .group .items .item .definition {
+    flex: 1 1 auto;
+    min-width: 0;
+    color: var(--gcl-text);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.gradingform_benchmarks .group .items .item .definition input[type="text"] {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-sm);
+    font-size: 0.9375rem;
+    background: var(--gcl-bg);
+    transition: border-color var(--gcl-transition-fast), box-shadow var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks .group .items .item .definition input[type="text"]:focus {
+    outline: none;
+    border-color: var(--gcl-primary);
+    box-shadow: 0 0 0 3px var(--gcl-primary-muted);
+}
+
+/* Score Field - Nice Box Design */
+.gradingform_benchmarks .group .items .item .score {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--gcl-text-muted);
+}
+
+.gradingform_benchmarks .group .items .item .score .scorevalue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.75rem;
+    height: 1.75rem;
+    padding: 0 0.375rem;
+    background: var(--gcl-bg-muted);
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-sm);
+    font-family: var(--gcl-font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gcl-text);
+}
+
+/* Edit mode: Score input styled as nice box */
+.gradingform_benchmarks .group .items .item .score input[type="text"] {
+    width: 3.5rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-sm);
+    font-family: var(--gcl-font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+    background: var(--gcl-bg-muted);
+    color: var(--gcl-text);
+}
+
+.gradingform_benchmarks .group .items .item .score input[type="text"]:focus {
+    outline: none;
+    border-color: var(--gcl-primary);
+    box-shadow: 0 0 0 3px var(--gcl-primary-muted);
+    background: var(--gcl-bg);
+}
+
+/* Points label is handled by PHP lang string - no CSS ::after needed */
+
+/* Checkbox - Evaluation Mode */
+.gradingform_benchmarks .group .items .item .checkbox {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gradingform_benchmarks .group .items .item .checkbox input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: var(--gcl-success);
+    cursor: pointer;
+    border-radius: var(--gcl-radius-sm);
+}
+
+/* Remark Field - Full Width */
+.gradingform_benchmarks .group .items .item .remark,
+.gradingform_benchmarks .group > .remark {
+    flex: 1 1 100%;
+    width: 100%;
+}
+
+.gradingform_benchmarks .group .items .item .remark textarea,
+.gradingform_benchmarks .group > .remark textarea,
+.mform .gradingform_benchmarks .group > .remark textarea {
+    width: 100% !important;
+    min-height: 80px;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+    font-family: var(--gcl-font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    resize: vertical;
+    background: var(--gcl-bg);
+    transition: border-color var(--gcl-transition-fast), box-shadow var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks .group .items .item .remark textarea:focus,
+.gradingform_benchmarks .group > .remark textarea:focus {
+    outline: none;
+    border-color: var(--gcl-primary);
+    box-shadow: 0 0 0 3px var(--gcl-primary-muted);
+}
+
+/* Delete Button - Trash Icon */
+.gradingform_benchmarks .group .items .item .delete {
+    flex: 0 0 auto;
+}
+
+.gradingform_benchmarks .group .items .item .delete input {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--gcl-border);
+    background-color: var(--gcl-bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 6 5 6 21 6'/%3E%3Cpath d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3Cline x1='10' y1='11' x2='10' y2='17'/%3E%3Cline x1='14' y1='11' x2='14' y2='17'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    cursor: pointer;
+    border-radius: var(--gcl-radius-sm);
+    text-indent: -9999px;
+    overflow: hidden;
+    opacity: 0.6;
+    transition: opacity var(--gcl-transition-fast), background-color var(--gcl-transition-fast), border-color var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks .group .items .item .delete input:hover {
+    opacity: 1;
+    background-color: var(--gcl-error-muted);
+    border-color: var(--gcl-error);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 6 5 6 21 6'/%3E%3Cpath d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3Cline x1='10' y1='11' x2='10' y2='17'/%3E%3Cline x1='14' y1='11' x2='14' y2='17'/%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Checked States - Premium Colors
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks .group .items .item.checked {
+    background: var(--gcl-success-muted);
+    border: 1px solid var(--gcl-success-border);
+}
+
+.gradingform_benchmarks .group .items .item.currentchecked {
+    background: var(--gcl-warning-muted);
+    border: 1px solid var(--gcl-warning-border);
+}
+
+.gradingform_benchmarks.evaluate .group .items .item:hover {
+    background: var(--gcl-success-muted);
+    border-color: var(--gcl-success);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Editor Controls - Move/Delete Group
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks.editor .group .controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    padding: 0.5rem 0;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gcl-border);
+}
+
+.gradingform_benchmarks.editor .group .controls div {
+    display: inline-flex;
+}
+
+.gradingform_benchmarks.editor .moveup input,
+.gradingform_benchmarks.editor .movedown input,
+.gradingform_benchmarks.editor .group .controls .delete input {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-sm);
+    background-color: var(--gcl-bg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    text-indent: -9999px;
+    transition: all var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks.editor .moveup input:hover,
+.gradingform_benchmarks.editor .movedown input:hover {
+    background-color: var(--gcl-bg-muted);
+    border-color: var(--gcl-border-hover);
+}
+
+.gradingform_benchmarks.editor .group .controls .delete input:hover {
+    background-color: var(--gcl-error-muted);
+    border-color: var(--gcl-error);
+}
+
+.gradingform_benchmarks.editor .moveup input {
+    background-image: url([[pix:t/up]]);
+}
+
+.gradingform_benchmarks.editor .movedown input {
+    background-image: url([[pix:t/down]]);
+}
+
+.gradingform_benchmarks.editor .group .controls .delete input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 6 5 6 21 6'/%3E%3Cpath d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3Cline x1='10' y1='11' x2='10' y2='17'/%3E%3Cline x1='14' y1='11' x2='14' y2='17'/%3E%3C/svg%3E");
+    background-size: 16px 16px;
+}
+
+.gradingform_benchmarks.editor .group .controls .delete input:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 6 5 6 21 6'/%3E%3Cpath d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3Cline x1='10' y1='11' x2='10' y2='17'/%3E%3Cline x1='14' y1='11' x2='14' y2='17'/%3E%3C/svg%3E");
+}
+
+/* Hide invalid move buttons */
+.gradingform_benchmarks.editor .group.first .controls .moveup input,
+.gradingform_benchmarks.editor .group.last .controls .movedown input {
+    display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Add Buttons - Premium Style
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks.editor .addgroup input,
+.gradingform_benchmarks.editor .additem input {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1rem 0.625rem 2.25rem;
+    font-family: var(--gcl-font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gcl-text-secondary);
+    background-color: var(--gcl-bg);
+    background-image: url([[pix:t/add]]);
+    background-repeat: no-repeat;
+    background-position: 0.75rem center;
+    background-size: 16px;
+    border: 1px dashed var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+    cursor: pointer;
+    transition: all var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks.editor .addgroup input:hover,
+.gradingform_benchmarks.editor .additem input:hover {
+    background-color: var(--gcl-primary-muted);
+    border-color: var(--gcl-primary);
+    color: var(--gcl-primary);
+}
+
+.gradingform_benchmarks.editor .addgroup {
+    margin-top: 1rem;
+}
+
+.gradingform_benchmarks.editor .additem {
+    margin-top: 0.75rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Status Badges
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks_editform .status {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--gcl-radius-sm);
+    border: 1px solid;
+}
+
+.gradingform_benchmarks_editform .status.ready {
+    background-color: var(--gcl-success-muted);
+    border-color: var(--gcl-success);
+    color: var(--gcl-success);
+}
+
+.gradingform_benchmarks_editform .status.draft {
+    background-color: var(--gcl-warning-muted);
+    border-color: var(--gcl-warning);
+    color: hsl(45, 93%, 30%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Points & Feedback
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks .pointstotals {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--gcl-text);
+    padding: 0.75rem 0;
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--gcl-border);
+}
+
+.gradingform_benchmarks .checklistfeedback {
+    font-weight: 600;
+    color: var(--gcl-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Error States
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks .group .items.error {
+    border: 2px solid var(--gcl-error);
+    border-radius: var(--gcl-radius-md);
+    padding: 0.5rem;
+}
+
+.gradingform_benchmarks .group .description.error,
+.gradingform_benchmarks .group .items .item .definition.error,
+.gradingform_benchmarks .group .items .item .score.error {
+    background: var(--gcl-error-muted);
+    border-radius: var(--gcl-radius-sm);
+    padding: 0.25rem;
+}
+
+.gradingform_benchmarks-regrade {
+    padding: 1rem;
+    background: var(--gcl-error-muted);
+    border: 1px solid var(--gcl-error);
+    border-radius: var(--gcl-radius-md);
+    margin-bottom: 1rem;
+}
+
+.gradingform_benchmarks-restored {
+    padding: 1rem;
+    background: var(--gcl-warning-muted);
+    border: 1px solid var(--gcl-warning);
+    border-radius: var(--gcl-radius-md);
+    margin-bottom: 1rem;
+}
+
+.gradingform_benchmarks-error {
+    color: var(--gcl-error);
+    font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Options Section
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks .options {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: var(--gcl-bg-subtle);
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-lg);
+}
+
+.gradingform_benchmarks .options .optionsheading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gcl-text);
+    margin-bottom: 0.75rem;
+}
+
+.gradingform_benchmarks .options .option {
+    padding: 0.375rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.gradingform_benchmarks .options .option label {
+    margin-left: 0.25rem;
+    color: var(--gcl-text);
+}
+
+.gradingform_benchmarks .options .option .value {
+    font-weight: 600;
+    color: var(--gcl-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Bulk Builder - Premium Card Design
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks_bulkbuilder {
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--gcl-bg-subtle) 0%, var(--gcl-bg) 100%);
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-xl);
+    box-shadow: var(--gcl-shadow-sm);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gcl-text);
+    margin-bottom: 0.5rem;
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-help {
+    font-size: 0.875rem;
+    color: var(--gcl-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+/* Format selector row */
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-formatrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    background: var(--gcl-bg);
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-formatlabel {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--gcl-text);
+    white-space: nowrap;
+    margin-right: 0.25rem;
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-formatradio {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--gcl-primary);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-formatlabel-option {
+    font-size: 0.8125rem;
+    color: var(--gcl-text);
+    cursor: pointer;
+    margin: 0;
+    padding-right: 0.5rem;
+}
+
+/* ChatGPT prompt download row */
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-downloadrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-download-hint {
+    font-size: 0.8125rem;
+    color: var(--gcl-text-secondary);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-download-prompt {
+    font-size: 0.8125rem;
+}
+
+/* Preview ordered list (numbered) */
+.bulkbuilder-preview-items {
+    margin: 0.25rem 0 0 1.25rem;
+    padding-left: 0;
+    font-size: 0.875rem;
+    color: var(--gcl-text-secondary);
+    line-height: 1.6;
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-examples {
+    width: 100%;
+    font-family: var(--gcl-font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    background: var(--gcl-bg);
+    border: 1px dashed var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+    padding: 0.875rem 1rem;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 160px;
+    display: block;
+    padding: 0.875rem 1rem;
+    font-family: var(--gcl-font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+    background: var(--gcl-bg);
+    resize: vertical;
+    transition: border-color var(--gcl-transition-fast), box-shadow var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-input:focus {
+    outline: none;
+    border-color: var(--gcl-primary);
+    box-shadow: 0 0 0 3px var(--gcl-primary-muted);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-actions .btn {
+    padding: 0.625rem 1.25rem;
+    font-family: var(--gcl-font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--gcl-radius-md);
+    cursor: pointer;
+    transition: all var(--gcl-transition-fast);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-actions .btn-primary {
+    background: var(--gcl-primary);
+    color: white;
+    border: none;
+    box-shadow: var(--gcl-shadow-sm);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-actions .btn-primary:hover {
+    background: var(--gcl-primary-hover);
+    box-shadow: var(--gcl-shadow-md);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-actions .btn-secondary {
+    background: var(--gcl-bg);
+    color: var(--gcl-text);
+    border: 1px solid var(--gcl-border);
+}
+
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-actions .btn-secondary:hover {
+    background: var(--gcl-bg-muted);
+    border-color: var(--gcl-border-hover);
+}
+
+/* Preview Area - Full Width */
+.gradingform_benchmarks_bulkbuilder .bulkbuilder-previewarea {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+}
+
+.bulkbuilder-preview-inner {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--gcl-bg);
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+}
+
+.bulkbuilder-preview-group {
+    margin-bottom: 1rem;
+}
+
+.bulkbuilder-preview-group:last-child {
+    margin-bottom: 0;
+}
+
+.bulkbuilder-preview-grouptitle {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--gcl-primary);
+    margin-bottom: 0.5rem;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Assign View Specific
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#page-mod-assign-view .gradingform_benchmarks-description table {
+    width: 100%;
+}
+
+#page-mod-assign-view #checklist-advancedgrading {
+    padding-left: 0;
+}
+
+/* Hide extra popout buttons */
+.path-mod-assign [data-region="grade-panel"] .gradingform_benchmarks a[data-region="popout-button"] {
+    display: none;
+}
+
+/* Word break for long definitions */
+#page-grade-grading-form-checklist-edit .gradingform_benchmarks .definition .plainvalue .textvalue {
+    word-break: break-word;
+}
+
+/* Definition input full width */
+#page-grade-grading-form-checklist-edit .gradingform_benchmarks input[id$="-definition-input"] {
+    width: 100%;
+}
+
+/* Hidden elements */
+.gradingform_benchmarks .hiddenelement,
+.gradingform_benchmarks.editor .hiddenelement,
+.gradingform_benchmarks.editor .group .items .item .plainvalue.hiddenelement {
+    display: none;
+}
+
+.gradingform_benchmarks.editor .pseudotablink {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Spacing before options */
+#checklist-checklist + .options {
+    margin-top: 2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Mobile Responsive - Tablet (768px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 768px) {
+    .gradingform_benchmarks .group {
+        padding: 1rem;
+    }
+
+    .gradingform_benchmarks .group .items .item {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .gradingform_benchmarks .group .items .item .definition {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .gradingform_benchmarks .group .items .item .score {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .gradingform_benchmarks .group .items .item .checkbox {
+        order: -1;
+        align-self: flex-start;
+    }
+
+    .gradingform_benchmarks .group .items .item .delete {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .gradingform_benchmarks_bulkbuilder {
+        padding: 1rem;
+    }
+
+    .gradingform_benchmarks_bulkbuilder .bulkbuilder-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .gradingform_benchmarks_bulkbuilder .bulkbuilder-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .gradingform_benchmarks.editor .group .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Mobile Responsive - Phone (480px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media screen and (max-width: 480px) {
+    .gradingform_benchmarks {
+        font-size: 0.875rem;
+    }
+
+    .gradingform_benchmarks .group {
+        padding: 0.75rem;
+        border-radius: var(--gcl-radius-md);
+    }
+
+    .gradingform_benchmarks .group .description {
+        font-size: 0.9375rem;
+    }
+
+    .gradingform_benchmarks .group .items .item {
+        padding: 0.625rem;
+    }
+
+    .gradingform_benchmarks .group .items .item .definition input[type="text"],
+    .gradingform_benchmarks .group .description input[type="text"] {
+        padding: 0.5rem 0.625rem;
+        font-size: 0.875rem;
+    }
+
+    .gradingform_benchmarks_bulkbuilder .bulkbuilder-heading {
+        font-size: 1rem;
+    }
+
+    .gradingform_benchmarks_bulkbuilder .bulkbuilder-examples {
+        font-size: 0.75rem;
+        padding: 0.625rem 0.75rem;
+    }
+
+    .gradingform_benchmarks_bulkbuilder .bulkbuilder-input {
+        min-height: 120px;
+        font-size: 0.875rem;
+    }
+
+    .gradingform_benchmarks .options {
+        padding: 1rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Print Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media print {
+    .gradingform_benchmarks .group {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .gradingform_benchmarks.editor .controls,
+    .gradingform_benchmarks.editor .addgroup,
+    .gradingform_benchmarks.editor .additem,
+    .gradingform_benchmarks_bulkbuilder,
+    .gradingform_benchmarks_tgaimport {
+        display: none !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TGA Import Section
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.gradingform_benchmarks_tgaimport {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, hsl(220, 90%, 98%) 0%, hsl(142, 76%, 98%) 100%);
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-lg);
+    box-shadow: var(--gcl-shadow-sm);
+}
+
+.gradingform_benchmarks_tgaimport .tgaimport-heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gcl-text);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gradingform_benchmarks_tgaimport .tgaimport-heading::before {
+    content: "🇦🇺";
+    font-size: 1.25rem;
+}
+
+.gradingform_benchmarks_tgaimport .tgaimport-help {
+    color: var(--gcl-text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.gradingform_benchmarks_tgaimport .tgaimport-search {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.gradingform_benchmarks_tgaimport .tga-label {
+    font-weight: 500;
+    color: var(--gcl-text);
+    margin-right: 0.5rem;
+}
+
+.gradingform_benchmarks_tgaimport .tga-unitcode {
+    width: 200px;
+    height: 40px;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid var(--gcl-border);
+    border-radius: var(--gcl-radius-md);
+    font-size: 0.9375rem;
+    font-family: var(--gcl-font-mono);
+    text-transform: uppercase;
+    transition: border-color var(--gcl-transition-fast), box-shadow var(--gcl-transition-fast);
+    box-sizing: border-box;
+}
+
+.gradingform_benchmarks_tgaimport .tga-unitcode:focus {
+    outline: none;
+    border-color: var(--gcl-primary);
+    box-shadow: 0 0 0 3px var(--gcl-primary-muted);
+}
+
+.gradingform_benchmarks_tgaimport .tga-status {
+    margin: 0.75rem 0;
+    font-size: 0.875rem;
+    min-height: 1.5rem;
+}
+
+.gradingform_benchmarks_tgaimport .tgaimport-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    padding: 1rem;
+    background: var(--gcl-bg);
+    border-radius: var(--gcl-radius-md);
+    border: 1px solid var(--gcl-border);
+}
+
+.gradingform_benchmarks_tgaimport .tga-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.gradingform_benchmarks_tgaimport .tga-option label {
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--gcl-text);
+    user-select: none;
+}
+
+.gradingform_benchmarks_tgaimport .tga-checkbox {
+    width: 1.125rem;
+    height: 1.125rem;
+    cursor: pointer;
+    accent-color: var(--gcl-primary);
+}
+
+.gradingform_benchmarks_tgaimport .tgaimport-actions {
+    margin-top: 1rem;
+}
+
+.gradingform_benchmarks_tgaimport .tga-fetch,
+.gradingform_benchmarks_tgaimport .tga-insert {
+    font-weight: 500;
+    height: 40px;
+    padding: 0 1.25rem;
+    border-radius: var(--gcl-radius-md);
+    transition: all var(--gcl-transition-fast);
+    color: white !important;
+    background: var(--gcl-primary) !important;
+    border: none !important;
+    vertical-align: middle;
+}
+
+.gradingform_benchmarks_tgaimport .tga-fetch:hover,
+.gradingform_benchmarks_tgaimport .tga-insert:hover {
+    background: var(--gcl-primary-hover) !important;
+}
+
+.gradingform_benchmarks_tgaimport .tga-fetch:disabled,
+.gradingform_benchmarks_tgaimport .tga-insert:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Mobile responsive for TGA import */
+@media screen and (max-width: 768px) {
+    .gradingform_benchmarks_tgaimport {
+        padding: 1rem;
+    }
+
+    .gradingform_benchmarks_tgaimport .tgaimport-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .gradingform_benchmarks_tgaimport .tga-unitcode {
+        width: 100% !important;
+    }
+
+    .gradingform_benchmarks_tgaimport .tgaimport-options {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gradingform_benchmarks_tgaimport .tgaimport-heading {
+        font-size: 1rem;
+    }
+
+    .gradingform_benchmarks_tgaimport .tga-option label {
+        font-size: 0.8125rem;
+    }
+}
