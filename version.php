@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'gradingform_benchmarks';
 
 // Version above official plugin to prevent Moodle "updates".
-$plugin->version   = 2026072300209;   // 2026-07-17, v1.2.34
+$plugin->version   = 2026072300;   // 2026-07-17, v1.2.34
 
 // Minimum Moodle version required (4.0+).
 $plugin->requires  = 2022041900;
