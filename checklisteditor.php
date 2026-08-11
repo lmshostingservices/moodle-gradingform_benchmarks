@@ -18,7 +18,7 @@
 /**
  * Grading method controller for the Checklist plugin
  *
- * @package    gradingform
+ * @package    gradingform_benchmarks
  * @subpackage checklist
  * @author     Sam Chaffee
  * @copyright  2011 Marina Glancy
@@ -131,7 +131,7 @@ class MoodleQuickForm_checklisteditor extends HTML_QuickForm_input {
     }
 
     /**
-     * Prepares the data passed in $_POST:
+     * Prepares the data passed in POST body data:
      * - processes the pressed buttons 'additem', 'addgroup', 'moveup', 'movedown', 'delete' (when JavaScript is disabled)
      *   sets $this->nonjsbuttonpressed to true/false if such button was pressed
      * - if options not passed (i.e. we create a new checklist) fills the options array with the default values

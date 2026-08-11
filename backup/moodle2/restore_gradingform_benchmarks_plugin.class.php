@@ -17,7 +17,7 @@
 /**
  * Support for restore API
  *
- * @package    gradingform
+ * @package    gradingform_benchmarks
  * @subpackage benchmarks
  * @copyright  2024 CBPlugins
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -32,7 +32,6 @@ defined('MOODLE_INTERNAL') || die();
  * benchmarks_groups / benchmarks_group / benchmarks_items / benchmarks_item / benchmarks_fillings / benchmarks_filling
  */
 class restore_gradingform_benchmarks_plugin extends restore_gradingform_plugin {
-
     /**
      * Declares the benchmarks XML paths attached to the form definition element
      *

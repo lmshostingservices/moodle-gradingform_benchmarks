@@ -16,7 +16,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    gradingform
+ * @package    gradingform_benchmarks
  * @subpackage benchmarks
  * @copyright  2011 David Mudrak <david@moodle.com>
  * @copyright  Copyright (c) 2012 Open LMS (https://www.openlms.net)

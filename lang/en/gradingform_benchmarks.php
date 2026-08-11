@@ -147,3 +147,5 @@ $string['siteid_desc'] = 'Your unique Site ID from the AI Grader dashboard.';
 $string['apikey'] = 'API Key';
 $string['apikey_desc'] = 'Your API Key from the AI Grader dashboard.';
 $string['centralconfig_fallback'] = '(Fallback - Central Config takes priority if installed)';
+
+$string['privacy:metadata'] = 'The gradingform_benchmarks plugin does not store any personal data.';

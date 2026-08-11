@@ -18,7 +18,6 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class observer {
-
     /**
      * FIX-BM-ZEROGRADE: Grant a new attempt when a benchmarks-graded student
      * receives exactly grade 0.

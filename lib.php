@@ -18,7 +18,7 @@
 /**
  * Grading method controller for the Checklist plugin
  *
- * @package    gradingform
+ * @package    gradingform_benchmarks
  * @subpackage checklist
  * @author     Sam Chaffee
  * @copyright  2011 David Mudrak <david@moodle.com>
@@ -38,7 +38,6 @@ const BENCHMARKS = 'benchmarks';
  * This controller encapsulates the checklist grading logic
  */
 class gradingform_benchmarks_controller extends gradingform_controller {
-
     // Modes of displaying the checklist (used in gradingform_benchmarks_renderer)
     /** checklist display mode: For editing (moderator or teacher creates a checklist) */
     const DISPLAY_EDIT_FULL     = 1;
@@ -696,7 +695,6 @@ class gradingform_benchmarks_controller extends gradingform_controller {
  * @copyright  Copyright (c) 2012 Open LMS (https://www.openlms.net)
  */
 class gradingform_benchmarks_instance extends gradingform_instance {
-
     protected $checklist;
 
     /**

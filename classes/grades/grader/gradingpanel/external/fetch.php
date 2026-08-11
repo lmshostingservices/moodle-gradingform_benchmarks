@@ -52,7 +52,6 @@ require_once($CFG->dirroot.'/grade/grading/form/benchmarks/lib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class fetch extends external_api {
-
     /**
      * Describes the parameters for fetching the grading panel for a simple grade.
      *

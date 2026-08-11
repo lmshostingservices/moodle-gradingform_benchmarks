@@ -35,7 +35,6 @@ use stdClass;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class checklist {
-
     /** @var array $criteria The criteria for this checklist. */
     protected $criteria = [];
 

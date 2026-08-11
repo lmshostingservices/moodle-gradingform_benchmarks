@@ -18,7 +18,7 @@
 /**
  * Renderer for the Checklist plugin
  *
- * @package    gradingform
+ * @package    gradingform_benchmarks
  * @subpackage checklist
  * @author     Sam Chaffee
  * @copyright  2011 Marina Glancy

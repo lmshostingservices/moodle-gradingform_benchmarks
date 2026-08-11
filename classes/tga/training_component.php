@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Assignment Benchmarks - TGA Training Component API.
  * 
@@ -17,7 +32,6 @@ namespace gradingform_benchmarks\tga;
 defined('MOODLE_INTERNAL') || die();
 
 class training_component {
-
     private const WSDL = 'https://ws.training.gov.au/Deewr.Tga.Webservices/TrainingComponentServiceV13.svc?wsdl';
     private const XML_BASE = 'https://training.gov.au/TrainingComponentFiles/';
     private const REST_BASE = 'https://training.gov.au/api/Training/';

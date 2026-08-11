@@ -31,9 +31,11 @@ require_once($CFG->dirroot . '/mod/assign/locallib.php');
  *
  * FIX-BM-ZEROGRADE (v1.2.34): replaces the direct $assign->process_add_attempt()
  * call in observer.php that caused "Call to protected method" exceptions.
+ * @package    gradingform_benchmarks
+ * @copyright  2026 LMS-Labs
+ * @license    http://www.gnu.org/licenses/gpl-3.0.html GNU GPL v3 or later
  */
 class assign_proxy extends \assign {
-
     /**
      * Re-expose process_add_attempt() as public so external callers can use it
      * regardless of which Moodle version declared it protected.

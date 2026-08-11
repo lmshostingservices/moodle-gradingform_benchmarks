@@ -48,7 +48,6 @@ require_once($CFG->dirroot.'/grade/grading/form/benchmarks/lib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class store extends external_api {
-
     /**
      * Describes the parameters for storing the grading panel for a simple grade.
      *

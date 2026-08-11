@@ -36,7 +36,6 @@ use moodle_exception;
  * 
  */
 class fetch_test extends advanced_testcase {
-
     protected function setUp(): void {
         global $CFG;
     }

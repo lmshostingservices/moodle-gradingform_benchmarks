@@ -17,7 +17,7 @@
 /**
  * Support for backup API
  *
- * @package    gradingform
+ * @package    gradingform_benchmarks
  * @subpackage benchmarks
  * @copyright  2024 CBPlugins
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -35,7 +35,6 @@ defined('MOODLE_INTERNAL') || die();
  * both plugins are installed simultaneously.
  */
 class backup_gradingform_benchmarks_plugin extends backup_gradingform_plugin {
-
     /**
      * Declares benchmarks structures to append to the grading form definition
      * @return backup_plugin_element

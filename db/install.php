@@ -24,6 +24,9 @@ defined('MOODLE_INTERNAL') || die();
  * and the Moodle XMLDB editor; that file is NOT loaded by upgradelib.php.
  *
  * @return bool
+ * @package    gradingform_benchmarks
+ * @copyright  2026 LMS-Labs
+ * @license    http://www.gnu.org/licenses/gpl-3.0.html GNU GPL v3 or later
  */
 function xmldb_gradingform_benchmarks_install() {
     global $DB;

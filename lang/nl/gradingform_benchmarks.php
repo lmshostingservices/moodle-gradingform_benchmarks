@@ -17,6 +17,7 @@
 /**
  * @copyright  Copyright (c) 2024 Open LMS (https://www.openlms.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    gradingform_benchmarks
  */
 
 defined('MOODLE_INTERNAL') || die();

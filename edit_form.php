@@ -18,7 +18,7 @@
 /**
  * Checklist editor form
  *
- * @package    gradingform
+ * @package    gradingform_benchmarks
  * @subpackage checklist
  * @author     Sam Chaffee
  * @copyright  2011 Marina Glancy <marina@moodle.com>
@@ -36,7 +36,6 @@ MoodleQuickForm::registerElementType('checklisteditor', $CFG->dirroot.'/grade/gr
  * Defines the checklist edit form
  */
 class gradingform_benchmarks_editchecklist extends moodleform {
-
     /**
      * Form element definition
      */

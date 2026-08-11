@@ -26,6 +26,7 @@
  *
  * @package    gradingform_benchmarks
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2026 LMS-Labs
  */
 
 defined('MOODLE_INTERNAL') || die();
