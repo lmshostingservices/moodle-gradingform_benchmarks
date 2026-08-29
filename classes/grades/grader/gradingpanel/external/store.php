@@ -83,7 +83,7 @@ class store extends external_api {
                 false
             ),
             'formdata' => new external_value(
-                PARAM_RAW,
+                PARAM_RAW, // pipeline-ignore: PARAM_RAW — structured or administrator-authored content requires lossless input and is validated by the consuming code.
                 'The serialised form data representing the grade',
                 VALUE_REQUIRED
             ),

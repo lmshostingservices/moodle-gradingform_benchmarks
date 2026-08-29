@@ -1,9 +1,0 @@
-{
-  "component": "gradingform_benchmarks",
-  "version": "1.2.31",
-  "numeric_version": "2026042300031",
-  "build_id": "71b3d8f2a5c9e048",
-  "build_timestamp": "2026-04-23T00:00:00.000Z",
-  "folder": "gradingform_benchmarks",
-  "verification": "amd-requirejs-define-format-fix"
-}

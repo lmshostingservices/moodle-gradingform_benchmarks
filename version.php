@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'gradingform_benchmarks';
 
 // Version above official plugin to prevent Moodle "updates".
-$plugin->version   = 2026072300;   // 2026-07-17, v1.2.34
+$plugin->version   = 2026082901;   // 2026-07-17, v1.2.34
 
 // Minimum Moodle version required (4.0+).
 $plugin->requires  = 2022041900;
@@ -42,5 +42,5 @@ $plugin->requires  = 2022041900;
 $plugin->supported = [400, 500];
 
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = '1.2.38'; // FIX-BM-ZEROGRADE-PROXY (v1.2.34): assign_proxy subclass promotes process_add_attempt() to public — fixes "Call to protected method assign::process_add_attempt() from scope gradingform_benchmarks\observer" on Moodle installs where that method is declared protected. No schema change.
+$plugin->release   = '1.2.39'; // RELEASE RECOVERY: Republished the reviewed authoritative source under a new immutable tag because the historical tag contained a different source tree. No functional changes.
 
